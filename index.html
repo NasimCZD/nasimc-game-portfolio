@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nasim Choroumi - Games Portfolio</title>
+    <style>
+        :root {
+            --bg-dark: #0B0F19;
+            --bg-card: #151D30;
+            --cyber-aqua: #00E5FF;
+            --text-light: #F3F4F6;
+            --text-muted: #9CA3AF;
+            --border-color: #24324F;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header Style */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 4rem;
+            border-bottom: 1px solid var(--border-color);
+            background: rgba(11, 15, 25, 0.8);
+            backdrop-filter: blur(8px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo-icon {
+            background: var(--cyber-aqua);
+            color: var(--bg-dark);
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            border-radius: 4px;
+        }
+
+        .logo-text {
+            font-weight: 600;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--cyber-aqua);
+        }
+
+        /* Hero Section */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            padding: 6rem 4rem;
+            max-width: 1300px;
+            margin: 0 auto;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(0, 229, 255, 0.1);
+            color: var(--cyber-aqua);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(0, 229, 255, 0.2);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+        }
+
+        .hero h1 span {
+            color: var(--cyber-aqua);
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .tags {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: var(--cyber-aqua);
+            color: var(--bg-dark);
+            padding: 0.8rem 2rem;
+            border-radius: 6px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0, 229, 255, 0.4);
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+        }
+
+        .hero-image-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -10%;
+            left: -10%;
+            width: 120%;
+            height: 120%;
+            background: radial-gradient(circle, rgba(0,229,255,0.08) 0%, transparent 70%);
+            z-index: -1;
+        }
+
+        .game-card-mockup {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .game-card-mockup img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* Mechanics / Features Grid */
+        .features {
+            background: rgba(21, 29, 48, 0.3);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            padding: 5rem 4rem;
+        }
+
+        .section-title {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 4rem auto;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            color: var(--text-muted);
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 2.5rem;
+            border-radius: 8px;
+            transition: border-color 0.2s;
+        }
+
+        .feature-card:hover {
+            border-color: var(--cyber-aqua);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            color: var(--cyber-aqua);
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Upcoming Section */
+        .upcoming {
+            padding: 6rem 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .upcoming-panel {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            margin-top: 3rem;
+            align-items: center;
+        }
+
+        .upcoming-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            min-height: 300px;
+        }
+
+        .upcoming-content {
+            padding: 3.5rem;
+        }
+
+        .upcoming-content span {
+            color: var(--cyber-aqua);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
+
+        .upcoming-content h3 {
+            font-size: 2rem;
+            margin: 0.5rem 0 1rem 0;
+        }
+
+        .upcoming-content p {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            header { padding: 1.5rem 2rem; }
+            .hero { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 2rem; }
+            .grid-3 { grid-template-columns: 1fr; }
+            .upcoming-panel { grid-template-columns: 1fr; }
+            .upcoming-content { padding: 2rem; }
+            nav { display: none; } /* Simplified for template footprint */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Navigation Bar -->
+    <header>
+        <div class="logo-container">
+            <div class="logo-icon">N</div>
+            <span class="logo-text">Nasim Choroumi</span>
+        </div>
+        <nav>
+            <a href="#featured-game">Featured Game</a>
+            <a href="#mechanics">Game Design</a>
+            <a href="#upcoming">Upcoming Projects</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section / Featured Game -->
+    <section id="featured-game" class="hero">
+        <div>
+            <div class="badge">🎮 PUBLISHED ON ITCH.IO</div>
+            <h1>Global Market <span>Sort Pro</span></h1>
+            <p>
+                A high-velocity, physics-based sorting experience modeled around dynamic global logistics. Balance economic flow, maintain structural accuracy, and orchestrate systematic pipelines in real time under scaling resource pressures.
+            </p>
+            
+            <div class="tags">
+                <div class="tag">🕹️ Physics Simulator</div>
+                <div class="tag">📊 Logistic Strategy</div>
+                <div class="tag">⚡ Real-time Orchestration</div>
+            </div>
+
+            <a href="https://nccf.itch.io/global-market-sort-pro" target="_blank" class="btn-primary">Play on Itch.io</a>
+        </div>
+        
+        <div class="hero-image-wrapper">
+            <div class="game-card-mockup">
+                <!-- Replace with your actual game image asset path -->
+                <img src="C:\Users\nasim\Documents\Games\MyPortfolio\images\splash.png" alt="Global Market Sort Pro Gameplay Layout">
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Mechanics Section -->
+    <section id="mechanics" class="features">
+        <div class="section-title">
+            <h2>The Sorting Engine Mechanics</h2>
+            <p>How technical design and physics constraints merge into a compelling enterprise-simulation layout.</p>
+        </div>
+        
+        <div class="grid-3">
+            <div class="feature-card">
+                <div class="feature-icon">📐</div>
+                <h3>Physics Sandbox</h3>
+                <p>Built with complex collision matrices and real-time gravity mechanics, forcing players to account for spatial volume and kinetic bounce.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">⏱️</div>
+                <h3>Agile Prioritization</h3>
+                <p>Simulates real-world constraint models. Sort assets based on shifting priorities before pipelines back up and create critical operational blockers.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">♻️</div>
+                <h3>Sustainable Systems</h3>
+                <p>Clean UI structures mirror sustainable design values—minimizing input bloat while optimizing fast, tactical macro-movements.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upcoming Games Section -->
+    <section id="upcoming" class="upcoming">
+        <div class="section-title">
+            <h2>Next Projects in the Pipeline</h2>
+            <p>Exploring creative interfaces, systemic mechanics, and experiential simulators.</p>
+        </div>
+
+        <div class="upcoming-panel">
+            <!-- Replace with your actual mixology game image asset path -->
+            <img class="upcoming-img" src="C:\Users\nasim\Documents\Games\MyPortfolio\images\icon.png" alt="Mixology Simulation Concept Design">
+            <div class="upcoming-content">
+                <span>In Development</span>
+                <h3>The Mixology Project</h3>
+                <p>An immersive asset-combination simulator where precise chemical balances, fluid dynamics, and ingredient structures dictate final scores. Blending programmatic sequencing with artisan creative combinations.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Custom Footer -->
+    <footer>
+        <p>© 2026 Nasim Choroumi. Dedicated to Interactive Design, Systems Logic & STEM Innovation.</p>
+    </footer>
+
+</body>
+</html>
